@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <h4 class="mt-3">Название: </h4>
+    <p>{{ product.name }}</p>
+    <h4>Категория: </h4>
+    <p>{{ product.category.name }}</p>
+    <h4>Описание: </h4>
+    <p>{{ product.description }}</p>
+    <h4>Изображения: </h4>
+    <ul class="row py-1">
+        {% if not images %}
+            <div>Изображений у товара нет.</div>
+        {% endif %}
+        {% for img in images %}
+            <li>
+                <img src="{{ img.image.url }}" alt="{{ product.name }}">
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
